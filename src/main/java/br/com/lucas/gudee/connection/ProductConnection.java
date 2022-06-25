@@ -12,7 +12,7 @@ import br.com.lucas.gudee.repository.ProductRepository;
 
 public class ProductConnection {
 
-	public static void save(Product product) {
+	public static void savE(Product product) {
 		System.out.println("sql|" + Sql.createProduct(product));
 		ConnectionJDBC.request(Sql.createProduct(product));
 
@@ -38,13 +38,13 @@ public class ProductConnection {
 		return list;
 	}
 
-	public Product findById(Integer id) {
+	public static Product findBYID(Integer id) {
 		Product product = new Product();
 
 		try {
 			Connection connection = ConnectionJDBC.connectionNow();
 			Statement stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery(Sql.findAllProduct());
+			ResultSet rs = stmt.executeQuery(Sql.findById(id));
 
 			while (rs.next()) {
 
@@ -56,6 +56,27 @@ public class ProductConnection {
 			e.printStackTrace();
 		}
 		return product;
+	}
+
+	public static List<Product> findBYNAME(String name) {
+		List<Product> productList = new ArrayList<Product>();
+
+		try {
+			Connection connection = ConnectionJDBC.connectionNow();
+			Statement stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery(Sql.findByNome(name));
+
+			while (rs.next()) {
+
+				Product product = new Product(rs.getInt("productId"), rs.getString("productName"),
+						rs.getString("description"));
+				productList.add(product);
+			}
+		} catch (SQLException e) {
+			productList = null;
+			e.printStackTrace();
+		}
+		return productList;
 	}
 
 	public List<Product> findByStack(Integer stack) {

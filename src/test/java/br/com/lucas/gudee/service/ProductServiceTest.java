@@ -32,10 +32,31 @@ public class ProductServiceTest {
 		List<Product> list = null;
 
 		list = service.findall();
-        
+
 		System.out.println(list.size());
 		Assert.assertNotEquals(list, null);
 
+	}
+
+	@Test
+	public void fandById() {
+
+		Product product = null;
+
+		product = service.findById(1);
+
+		System.out.println("||id:"+product.toString());
+		Assert.assertNotEquals(product, null);
+
+	}
+	@Test
+	public void findByName() {
+		List<Product> product = null;
+
+		product = service.findByName("java");
+
+		System.out.println(product.size());
+		Assert.assertNotEquals(product, null);
 	}
 
 }

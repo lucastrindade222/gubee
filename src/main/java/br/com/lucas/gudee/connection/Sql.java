@@ -30,18 +30,18 @@ public class Sql {
 
 			if (!product.getProductName().equals("") && product.getProductName() != null) {
 				variable += "productName";
-				values  +="'"+product.getProductName()+"'"; 
+				values += "'" + product.getProductName() + "'";
 			}
 			if (!product.getDescription().equals("") && product.getDescription() != null) {
 
 				variable += ",description";
-				values  +=",'"+product.getDescription()+"'"; 
-				
+				values += ",'" + product.getDescription() + "'";
+
 			}
 
 		}
-		String sql =  "INSERT INTO product ("+variable+") VALUES ("+values+")";
-	 
+		String sql = "INSERT INTO product (" + variable + ") VALUES (" + values + ")";
+
 		return sql;
 	}
 
@@ -53,12 +53,11 @@ public class Sql {
 
 			if (!stack.getNome().equals("") && stack.getNome() != null) {
 				variable += "nome";
-				values  +="'"+stack.getNome()+"'"; 
+				values += "'" + stack.getNome() + "'";
 			}
-			 
 
 		}
-		String sql =  "INSERT INTO stack ("+variable+") VALUES ("+values+")";
+		String sql = "INSERT INTO stack (" + variable + ") VALUES (" + values + ")";
 
 		return sql;
 	}
@@ -69,10 +68,17 @@ public class Sql {
 
 		return sql;
 	}
-	
+
+	public static String findByNome(String nome) {
+
+		String sql = "SELECT productId,productName , description  FROM product WHERE productName LIKE '%"+nome+" %'";
+
+		return sql;
+	}
+
 	public static String findById(Integer id) {
 
-		String sql = "SELECT productId,productName , description  FROM product WHERE productId ="+id;
+		String sql = "SELECT productId,productName , description  FROM product WHERE productId =" + id;
 
 		return sql;
 	}
