@@ -1,4 +1,4 @@
-package jp.coppermine;
+package br.com.lucas.gudee.coppermine;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.faces.annotation.FacesConfig;

@@ -1,4 +1,4 @@
-package jp.coppermine;
+package br.com.lucas.gudee.coppermine;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

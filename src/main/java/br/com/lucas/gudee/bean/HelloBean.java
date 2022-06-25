@@ -1,4 +1,4 @@
-package jp.coppermine.ping;
+package br.com.lucas.gudee.bean;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
