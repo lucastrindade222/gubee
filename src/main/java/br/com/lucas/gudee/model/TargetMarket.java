@@ -11,7 +11,6 @@ public class TargetMarket {
 
 	public TargetMarket(String name) {
 		super();
-
 		this.name = name;
 	}
 

@@ -2,6 +2,8 @@ package br.com.lucas.gudee.connection;
 
 import br.com.lucas.gudee.model.Product;
 import br.com.lucas.gudee.model.Stack;
+import br.com.lucas.gudee.model.Stack_product;
+import br.com.lucas.gudee.model.Targe_product;
 import br.com.lucas.gudee.model.TargetMarket;
 
 public class Sql {
@@ -98,8 +100,7 @@ public class Sql {
 
 		return sql;
 	}
-	
-	
+
 	public static String createTargetMarket(TargetMarket targetMarket) {
 
 		String variable = "";
@@ -116,16 +117,70 @@ public class Sql {
 
 		return sql;
 	}
+
 	public static String findAllTargetMarket() {
 
 		String sql = "SELECT targetId, name from targetMarket";
 
 		return sql;
 	}
-	
+
 	public static String findByIdTargetMarket(Integer id) {
 
 		String sql = "SELECT targetId, name from targetMarket WHERE targetId =" + id;
+
+		return sql;
+	}
+
+	public static String createTarge_product(Targe_product targe_product) {
+
+		String variable = "";
+		String values = "";
+		if (targe_product != null) {
+
+			if (!targe_product.getProductIdFK().equals("") && targe_product.getProductIdFK() != null) {
+				variable += "productIdFK";
+				values += "'" + targe_product.getProductIdFK() + "'";
+			}
+			if (!targe_product.getTargeIdFk().equals("") && targe_product.getTargeIdFk() != null) {
+
+				variable += ",targeIdFk";
+				values += ",'" + targe_product.getTargeIdFk() + "'";
+
+			}
+
+		}
+		String sql = "INSERT INTO targe_product (" + variable + ") VALUES (" + values + ")";
+
+		return sql;
+	}
+
+	public static String findAllTarge_product() {
+
+		String sql = "SELECT  targe_product,targeIdFk, productIdFK, from targe_product";
+
+		return sql;
+	}
+
+	public static String createStack_product(Stack_product stack_product) {
+
+		String variable = "";
+		String values = "";
+		if (stack_product != null) {
+
+			if (stack_product.getProductIdFK() != null) {
+				variable += "productIdFK";
+				values += "" + stack_product.getProductIdFK() + "";
+			}
+			if (stack_product.getStackIdFk() != null) {
+
+				variable += ",stackIdFk";
+				values += "," + stack_product.getStackIdFk() + "";
+
+			}
+
+		}
+		String sql = "INSERT INTO stack_product (" + variable + ") VALUES (" + values + ")";
 
 		return sql;
 	}
