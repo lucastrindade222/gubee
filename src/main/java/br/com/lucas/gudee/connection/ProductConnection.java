@@ -1,6 +1,7 @@
 package br.com.lucas.gudee.connection;
 
 import static br.com.lucas.gudee.connection.ConnectionJDBC.connectionNow;
+import static br.com.lucas.gudee.connection.ConnectionJDBC.request;
 import static br.com.lucas.gudee.connection.Sql.createProduct;
 import static br.com.lucas.gudee.connection.Sql.findAllProduct;
 import static br.com.lucas.gudee.connection.Sql.findByIdProduct;
@@ -20,7 +21,7 @@ public class ProductConnection {
 
 	public static void savE(Product product) {
 		 
-		ConnectionJDBC.request(createProduct(product));
+		request(createProduct(product));
 
 	}
 

@@ -3,10 +3,10 @@ package br.com.lucas.gudee.test;
 import static br.com.lucas.gudee.connection.Sql.createProduct;
 import static br.com.lucas.gudee.connection.Sql.createStack;
 import static br.com.lucas.gudee.connection.Sql.findAllProduct;
+
 import org.junit.Assert;
 import org.junit.Test;
 
-import br.com.lucas.gudee.connection.ConnectionJDBC;
 import br.com.lucas.gudee.connection.DatabaseCreation;
 import br.com.lucas.gudee.model.Product;
 import br.com.lucas.gudee.model.Stack;

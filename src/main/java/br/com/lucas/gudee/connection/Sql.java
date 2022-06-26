@@ -2,6 +2,7 @@ package br.com.lucas.gudee.connection;
 
 import br.com.lucas.gudee.model.Product;
 import br.com.lucas.gudee.model.Stack;
+import br.com.lucas.gudee.model.TargetMarket;
 
 public class Sql {
 
@@ -94,6 +95,37 @@ public class Sql {
 	public static String findByIdStack(Integer id) {
 
 		String sql = "SELECT stackId, name from stack WHERE stackId =" + id;
+
+		return sql;
+	}
+	
+	
+	public static String createTargetMarket(TargetMarket targetMarket) {
+
+		String variable = "";
+		String values = "";
+		if (targetMarket != null) {
+
+			if (!targetMarket.getName().equals("") && targetMarket.getName() != null) {
+				variable += "name";
+				values += "'" + targetMarket.getName() + "'";
+			}
+
+		}
+		String sql = "INSERT INTO targetMarket (" + variable + ") VALUES (" + values + ")";
+
+		return sql;
+	}
+	public static String findAllTargetMarket() {
+
+		String sql = "SELECT targetId, name from targetMarket";
+
+		return sql;
+	}
+	
+	public static String findByIdTargetMarket(Integer id) {
+
+		String sql = "SELECT targetId, name from targetMarket WHERE targetId =" + id;
 
 		return sql;
 	}

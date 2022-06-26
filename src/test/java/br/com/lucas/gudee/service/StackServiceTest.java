@@ -2,7 +2,6 @@ package br.com.lucas.gudee.service;
 
 import static org.junit.Assert.assertNotEquals;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
