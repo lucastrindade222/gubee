@@ -9,8 +9,8 @@ public class Sql {
 
 		return "create table product(productId int NOT NULL AUTO_INCREMENT,"
 				+ "productName CHAR(255),description CHAR(255),PRIMARY KEY (productId)" + ");create table targetMarket("
-				+ "targetId int NOT NULL AUTO_INCREMENT,nome CHAR(255),PRIMARY KEY (targetId)"
-				+ ");create table stack(stackId int NOT NULL AUTO_INCREMENT," + "nome CHAR(255),PRIMARY KEY (stackId));"
+				+ "targetId int NOT NULL AUTO_INCREMENT,name CHAR(255),PRIMARY KEY (targetId)"
+				+ ");create table stack(stackId int NOT NULL AUTO_INCREMENT," + "name CHAR(255),PRIMARY KEY (stackId));"
 				+ "create table stack_product(stack_product int NOT NULL AUTO_INCREMENT,"
 				+ "productIdFK int,stackIdFk int,PRIMARY KEY (stack_product),"
 				+ "FOREIGN KEY (productIdFK) REFERENCES product (productId) ON DELETE CASCADE ON UPDATE RESTRICT,"
@@ -45,15 +45,37 @@ public class Sql {
 		return sql;
 	}
 
+	public static String findAllProduct() {
+
+		String sql = "SELECT productId,productName, description  FROM product";
+
+		return sql;
+	}
+
+	public static String findByNameProduct(String name) {
+
+		String sql = "SELECT productId,productName , description  FROM product WHERE productName LIKE '%" + name
+				+ " %'";
+
+		return sql;
+	}
+
+	public static String findByIdProduct(Integer id) {
+
+		String sql = "SELECT productId,productName , description  FROM product WHERE productId =" + id;
+
+		return sql;
+	}
+
 	public static String createStack(Stack stack) {
 
 		String variable = "";
 		String values = "";
 		if (stack != null) {
 
-			if (!stack.getNome().equals("") && stack.getNome() != null) {
-				variable += "nome";
-				values += "'" + stack.getNome() + "'";
+			if (!stack.getName().equals("") && stack.getName() != null) {
+				variable += "name";
+				values += "'" + stack.getName() + "'";
 			}
 
 		}
@@ -62,23 +84,16 @@ public class Sql {
 		return sql;
 	}
 
-	public static String findAllProduct() {
+	public static String findAllStack() {
 
-		String sql = "SELECT productId,productName, description  FROM product";
-
-		return sql;
-	}
-
-	public static String findByNome(String nome) {
-
-		String sql = "SELECT productId,productName , description  FROM product WHERE productName LIKE '%"+nome+" %'";
+		String sql = "SELECT stackId, name from stack";
 
 		return sql;
 	}
 
-	public static String findById(Integer id) {
+	public static String findByIdStack(Integer id) {
 
-		String sql = "SELECT productId,productName , description  FROM product WHERE productId =" + id;
+		String sql = "SELECT stackId, name from stack WHERE stackId =" + id;
 
 		return sql;
 	}

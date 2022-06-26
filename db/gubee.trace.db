@@ -920,3 +920,27 @@ org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "productName" not found [42122-2
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:756)
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:452)
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)
+2022-06-25 22:15:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PRODUCT" already exists; SQL statement:
+create table product(productId int NOT NULL AUTO_INCREMENT,productName CHAR(255),description CHAR(255),PRIMARY KEY (productId)) [42101-214]
+2022-06-25 22:16:38 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PRODUCT" already exists; SQL statement:
+create table product(productId int NOT NULL AUTO_INCREMENT,productName CHAR(255),description CHAR(255),PRIMARY KEY (productId)) [42101-214]
+2022-06-25 22:17:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PRODUCT" already exists; SQL statement:
+create table product(productId int NOT NULL AUTO_INCREMENT,productName CHAR(255),description CHAR(255),PRIMARY KEY (productId)) [42101-214]
+2022-06-25 22:18:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PRODUCT" already exists; SQL statement:
+create table product(productId int NOT NULL AUTO_INCREMENT,productName CHAR(255),description CHAR(255),PRIMARY KEY (productId)) [42101-214]
+2022-06-25 22:19:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PRODUCT" already exists; SQL statement:
+create table product(productId int NOT NULL AUTO_INCREMENT,productName CHAR(255),description CHAR(255),PRIMARY KEY (productId)) [42101-214]
+2022-06-25 22:20:17 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PRODUCT" already exists; SQL statement:
+create table product(productId int NOT NULL AUTO_INCREMENT,productName CHAR(255),description CHAR(255),PRIMARY KEY (productId)) [42101-214]
+2022-06-25 22:20:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PRODUCT" already exists; SQL statement:
+create table product(productId int NOT NULL AUTO_INCREMENT,productName CHAR(255),description CHAR(255),PRIMARY KEY (productId)) [42101-214]
+2022-06-25 22:44:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT stackId, name from stack [*]FROM stack WHERE stackId =1"; SQL statement:
+SELECT stackId, name from stack FROM stack WHERE stackId =1 [42000-214]

@@ -21,16 +21,16 @@ public class SqlTest {
 		
 		Product product = new Product("lucas","disc");
 		String sql = createProduct(product);
-		Assert.assertEquals("Erro na craçao do sql Produto","INSERT INTO product (product.productName,product.description) VALUES ('lucas','disc')", sql);
+		Assert.assertEquals("Erro na craçao do sql Produto","NSERT INTO product ( productName, description) VALUES ('lucas','disc')", sql);
 		
 	}
 	@Test
 	public void createStackTest() {
 		
 		
-		Stack stack = new Stack("nome");
+		Stack stack = new Stack("name");
 		String sql = createStack(stack);
-		Assert.assertEquals("Erro na craçao do sql Stack","INSERT INTO stack (stack.nome) VALUES ('nome')", sql);
+		Assert.assertEquals("Erro na craçao do sql Stack","INSERT INTO stack (stack.name) VALUES ('name')", sql);
 		
 	}
 	
@@ -40,7 +40,7 @@ public class SqlTest {
 		
  
 		String sql = findAllProduct();
-		Assert.assertEquals("Erro na craçao do sql findAll","SELECT productId, productName, description FROM product", sql);
+		Assert.assertEquals("Erro na craçao do sql findAll","SELECT productId,productName, description FROM  product", sql);
 		
 	}
 	

@@ -1,5 +1,11 @@
 package br.com.lucas.gudee.connection;
 
+import static br.com.lucas.gudee.connection.ConnectionJDBC.connectionNow;
+import static br.com.lucas.gudee.connection.Sql.createProduct;
+import static br.com.lucas.gudee.connection.Sql.findAllProduct;
+import static br.com.lucas.gudee.connection.Sql.findByIdProduct;
+import static br.com.lucas.gudee.connection.Sql.findByNameProduct;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,22 +14,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.lucas.gudee.model.Product;
-import br.com.lucas.gudee.repository.ProductRepository;
+ 
 
 public class ProductConnection {
 
 	public static void savE(Product product) {
-		System.out.println("sql|" + Sql.createProduct(product));
-		ConnectionJDBC.request(Sql.createProduct(product));
+		 
+		ConnectionJDBC.request(createProduct(product));
 
 	}
 
 	public static List<Product> findAll() {
 		List<Product> list = new ArrayList<Product>();
 		try {
-			Connection connection = ConnectionJDBC.connectionNow();
+			Connection connection = connectionNow();
 			Statement stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery(Sql.findAllProduct());
+			ResultSet rs = stmt.executeQuery(findAllProduct());
 
 			while (rs.next()) {
 
@@ -42,9 +48,9 @@ public class ProductConnection {
 		Product product = new Product();
 
 		try {
-			Connection connection = ConnectionJDBC.connectionNow();
+			Connection connection = connectionNow();
 			Statement stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery(Sql.findById(id));
+			ResultSet rs = stmt.executeQuery(findByIdProduct(id));
 
 			while (rs.next()) {
 
@@ -62,9 +68,9 @@ public class ProductConnection {
 		List<Product> productList = new ArrayList<Product>();
 
 		try {
-			Connection connection = ConnectionJDBC.connectionNow();
+			Connection connection = connectionNow();
 			Statement stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery(Sql.findByNome(name));
+			ResultSet rs = stmt.executeQuery(findByNameProduct(name));
 
 			while (rs.next()) {
 
@@ -89,9 +95,6 @@ public class ProductConnection {
 		return null;
 	}
 
-	public void upDate(Product obj) {
-		// TODO Auto-generated method stub
-
-	}
+ 
 
 }

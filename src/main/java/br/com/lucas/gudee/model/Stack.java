@@ -3,18 +3,18 @@ package br.com.lucas.gudee.model;
 public class Stack {
 
 	private Integer stackId;
-	private String nome;
+	private String name;
 
 	public Stack() {
 	}
-	public Stack(String nome) {
-		this.nome = nome;
+	public Stack(String name) {
+		this.name = name;
 	}
 
-	public Stack(Integer stackId, String nome) {
+	public Stack(Integer stackId, String name) {
 		super();
 		this.stackId = stackId;
-		this.nome = nome;
+		this.name = name;
 	}
 
 	public Integer getStackId() {
@@ -25,12 +25,12 @@ public class Stack {
 		this.stackId = stackId;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }
