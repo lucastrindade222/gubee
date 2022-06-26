@@ -1,5 +1,6 @@
 package br.com.lucas.gudee.model;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Product {
@@ -7,6 +8,8 @@ public class Product {
 	private Integer productId;
 	private String productName;
 	private String description;
+	private List<Stack> stack;
+	private List<TargetMarket> targetMarket;
 
 	public Product() {
 
@@ -23,6 +26,14 @@ public class Product {
 		this.productId = productId;
 		this.productName = productName;
 		this.description = description;
+	}
+	
+	public Integer getProductId() {
+		return productId;
+	}
+
+	public void setProductId(Integer productId) {
+		this.productId = productId;
 	}
 
 	public Integer getId() {
@@ -47,6 +58,26 @@ public class Product {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	
+
+
+
+	public List<Stack> getStack() {
+		return stack;
+	}
+
+	public void setStack(List<Stack> stack) {
+		this.stack = stack;
+	}
+
+	public List<TargetMarket> getTargetMarket() {
+		return targetMarket;
+	}
+
+	public void setTargetMarket(List<TargetMarket> targetMarket) {
+		this.targetMarket = targetMarket;
 	}
 
 	@Override

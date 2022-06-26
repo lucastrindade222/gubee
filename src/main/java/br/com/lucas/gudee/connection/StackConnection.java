@@ -3,6 +3,7 @@ package br.com.lucas.gudee.connection;
 import static br.com.lucas.gudee.connection.ConnectionJDBC.connectionNow;
 import static br.com.lucas.gudee.connection.Sql.createStack;
 import static br.com.lucas.gudee.connection.Sql.findByIdStack;
+import static br.com.lucas.gudee.connection.Sql.findStackByProductID;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -55,6 +56,24 @@ public class StackConnection {
 		}
 
 		return stack;
+	}
+
+	public static List<Stack> findStackByProductId(Integer productId) {
+		List<Stack> list = new ArrayList<Stack>();
+		try {
+			Connection connection = connectionNow();
+			Statement stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery(findStackByProductID(productId));
+
+			while (rs.next()) {
+				Stack stack = new Stack(rs.getInt("stackId"), rs.getString("name"));
+				list.add(stack);
+			}
+		} catch (SQLException e) {
+			list = null;
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 }

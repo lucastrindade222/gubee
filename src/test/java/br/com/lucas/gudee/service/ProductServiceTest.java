@@ -6,6 +6,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.google.gson.Gson;
+
 import br.com.lucas.gudee.model.Product;
 
 public class ProductServiceTest {
@@ -58,5 +60,49 @@ public class ProductServiceTest {
 		System.out.println(product.size());
 		Assert.assertNotEquals(product, null);
 	}
+	
+	@Test
+	public void findokAll() {
+		
+		List<Product> list = null;
+
+		list = service.findall();
+		
+	}
+	
+	@Test
+	public void findAllFull() {
+	
+		List<Product> productList = null;	
+		 
+		
+		productList =service.findAllFull();
+		
+		for (Product product : productList) {
+			
+			Assert.assertNotEquals(product.getStack(), null);
+			Assert.assertNotEquals(product.getTargetMarket(), null);
+		}
+		
+ 
+	}
+	
+	@Test
+	public void findAllFullByStackId() {
+	
+		List<Product> productList = null;	
+		 Integer Ids[] = {1,2};
+		 
+		productList =service.findAllFullByStackId(Ids);
+		
+		for (Product product : productList) {
+			
+			Assert.assertNotEquals(product.getStack(), null);
+			Assert.assertNotEquals(product.getTargetMarket(), null);
+		}
+		
+ 
+	}
+	
 
 }

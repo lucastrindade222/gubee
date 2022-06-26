@@ -50,10 +50,11 @@ public class Sql {
 
 	public static String findAllProduct() {
 
-		String sql = "SELECT productId,productName, description  FROM product";
-
+		String sql = "SELECT productId,productName, description  FROM product;";
+ 
 		return sql;
 	}
+	
 
 	public static String findByNameProduct(String name) {
 
@@ -63,6 +64,31 @@ public class Sql {
 		return sql;
 	}
 
+	public static String findAllFullByStackId(Integer[] ids) {
+		
+		
+		String sql ="SELECT  DISTINCT productId, productName, description  from product pr JOIN stack_product sp WHERE pr.productId = sp.productIdFK and ";
+		
+		String complement = " ";
+		Integer counter =0;
+		for (Integer id : ids) {
+			
+		
+			if(counter == 0) {
+				complement += "sp.stackIdFk = "+id;
+				counter++;
+			    continue;
+			}
+			
+			complement += "or sp.stackIdFk = "+id;
+			counter++;
+		}
+		
+		
+		return sql+complement;
+		
+	}
+	
 	public static String findByIdProduct(Integer id) {
 
 		String sql = "SELECT productId,productName , description  FROM product WHERE productId =" + id;
@@ -100,6 +126,16 @@ public class Sql {
 
 		return sql;
 	}
+	
+	public static String findStackByProductID(Integer id) {
+
+		String sql = "SELECT DISTINCT stackId, name from stack st JOIN stack_product sp  WHERE sp.productIdFK = "+id+" and sp.productIdFK = st.stackId";
+
+		return sql;
+	}
+
+
+	
 
 	public static String createTargetMarket(TargetMarket targetMarket) {
 
@@ -128,6 +164,12 @@ public class Sql {
 	public static String findByIdTargetMarket(Integer id) {
 
 		String sql = "SELECT targetId, name from targetMarket WHERE targetId =" + id;
+
+		return sql;
+	}
+	
+	public static String findTargetMarketByProductID(Integer id ) {
+		String sql = "SELECT DISTINCT tar.targetid, tar.name from targetMarket tar JOIN targe_product tp WHERE tp.PRODUCTIDFK= "+id+" and tar.targetId = tp.TARGEIDFK ";
 
 		return sql;
 	}
@@ -185,4 +227,22 @@ public class Sql {
 		return sql;
 	}
 
+	
+//	private void teste() {
+		
+		
+//		public static String findStackByProductId(Integer id) {
+//
+//			String sql = "SELECT DISTINCT stackId, name from stack st JOIN stack_product sp  WHERE sp.productIdFK = "+id+" and sp.productIdFK = st.stackId";
+//
+//			return sql;
+//		}
+//		public static String findTargetMarketByProductId(Integer id) {
+//
+//			String sql = "SELECT targetId, name from targetMarket WHERE targetId =" + id;
+//
+//			return sql;
+//		}
+//	}
+	
 }
