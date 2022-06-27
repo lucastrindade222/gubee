@@ -1,5 +1,7 @@
 package br.com.lucas.gudee.service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Assert;
@@ -78,11 +80,8 @@ public class ProductServiceTest {
 		
 		productList =service.findAllFull();
 		
-		for (Product product : productList) {
-			
-			Assert.assertNotEquals(product.getStack(), null);
-			Assert.assertNotEquals(product.getTargetMarket(), null);
-		}
+		productList.stream().forEach(p->Assert.assertNotEquals(p.getStack(), null));
+		productList.stream().forEach(p->Assert.assertNotEquals(p.getTargetMarket(), null));
 		
  
 	}
@@ -91,15 +90,13 @@ public class ProductServiceTest {
 	public void findAllFullByStackId() {
 	
 		List<Product> productList = null;	
-		 Integer Ids[] = {1,2};
+		List<Integer> Ids = Arrays.asList(1,2);
 		 
 		productList =service.findAllFullByStackId(Ids);
 		
-		for (Product product : productList) {
-			
-			Assert.assertNotEquals(product.getStack(), null);
-			Assert.assertNotEquals(product.getTargetMarket(), null);
-		}
+		productList.stream().forEach(p->Assert.assertNotEquals(p.getStack(), null));
+		productList.stream().forEach(p->Assert.assertNotEquals(p.getTargetMarket(), null));
+		 
 		
  
 	}

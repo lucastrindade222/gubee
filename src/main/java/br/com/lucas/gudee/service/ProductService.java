@@ -5,6 +5,7 @@ import static br.com.lucas.gudee.connection.ProductConnection.findBYID;
 import static br.com.lucas.gudee.connection.ProductConnection.findBYNAME;
 import static br.com.lucas.gudee.connection.ProductConnection.savE;
 import static br.com.lucas.gudee.connection.StackConnection.findStackByProductId;
+import static br.com.lucas.gudee.connection.TargetMarketConnection.findTargetMarketByProductId;
 
 import java.util.List;
 
@@ -39,35 +40,32 @@ public class ProductService {
 	}
 
 	public List<Product> findAllFull() {
-		 
-		List<Product> list = findAll(); 
-	 
-		
-		
-		return  fromListProduct(list);
+
+		List<Product> list = findAll();
+
+		return fromListProduct(list);
 	}
 
-	public List<Product> findAllFullByStackId(Integer[] ids) {
-		List<Product> list = ProductConnection.findAllFullByStackID(ids); 
-		
-		
-		 
-		return  fromListProduct(list);
+	public List<Product> findAllFullByStackId(List<Integer> ids) {
+		List<Product> list = ProductConnection.findAllFullByStackID(ids);
+
+		return fromListProduct(list);
 	}
-	public List<Product> fromListProduct(List<Product> list){
-		
+
+	public List<Product> fromListProduct(List<Product> list) {
+
 		int counter = 0;
 		for (Product product : list) {
-			
-			List<Stack> stackList =	findStackByProductId(product.getProductId());
-		    List<TargetMarket> targetMarket =TargetMarketConnection.findTargetMarketByProductId(product.getProductId());
+
+			List<Stack> stackList = findStackByProductId(product.getProductId());
+			List<TargetMarket> targetMarket = findTargetMarketByProductId(product.getProductId());
 			list.get(counter).setStack(stackList);
 			list.get(counter).setTargetMarket(targetMarket);
 			counter++;
 		}
-		
+
 		return list;
-		
+
 	}
 
 }

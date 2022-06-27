@@ -89,7 +89,7 @@ public class ProductConnection {
 
  
 
-	public static List<Product> findAllFullByStackID(Integer[] ids) {
+	public static List<Product> findAllFullByStackID(List<Integer> ids) {
 		List<Product> productList = new ArrayList<Product>();
 
 		try {

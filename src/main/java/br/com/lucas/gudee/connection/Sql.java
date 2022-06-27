@@ -1,4 +1,7 @@
 package br.com.lucas.gudee.connection;
+import java.util.stream.Collector;
+ 
+import java.util.List;
 
 import br.com.lucas.gudee.model.Product;
 import br.com.lucas.gudee.model.Stack;
@@ -64,13 +67,15 @@ public class Sql {
 		return sql;
 	}
 
-	public static String findAllFullByStackId(Integer[] ids) {
+	public static String findAllFullByStackId( List<Integer> ids) {
 		
 		
 		String sql ="SELECT  DISTINCT productId, productName, description  from product pr JOIN stack_product sp WHERE pr.productId = sp.productIdFK and ";
 		
 		String complement = " ";
 		Integer counter =0;
+		
+ 
 		for (Integer id : ids) {
 			
 		
