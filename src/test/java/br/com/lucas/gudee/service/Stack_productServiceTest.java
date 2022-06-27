@@ -1,5 +1,7 @@
 package br.com.lucas.gudee.service;
 
+import java.sql.SQLException;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,7 +17,7 @@ public class Stack_productServiceTest {
 	}
 
 	@Test
-	public void saveTest() {
+	public void saveTest() throws SQLException {
 
 		Stack_product stack_product = new Stack_product(1, 2);
 

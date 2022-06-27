@@ -1,5 +1,6 @@
 package br.com.lucas.gudee.service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.junit.Assert;
@@ -18,7 +19,7 @@ public class TargetMarketServiceTeste {
 	}
 
 	@Test
-	public void saveTeste() {
+	public void saveTeste() throws SQLException {
 
 		TargetMarket targetMarket = new TargetMarket("teste 1");
 
@@ -27,7 +28,7 @@ public class TargetMarketServiceTeste {
 	}
 
 	@Test
-	public void findAllTeste() {
+	public void findAllTeste() throws SQLException {
 
 		List<TargetMarket> list = null;
 
@@ -38,7 +39,7 @@ public class TargetMarketServiceTeste {
 	}
 	
 	@Test
-	public void findById() {
+	public void findById() throws SQLException {
 		
 		TargetMarket targetMarket;
 		

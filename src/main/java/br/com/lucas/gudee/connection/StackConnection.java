@@ -16,13 +16,13 @@ import br.com.lucas.gudee.model.Stack;
 
 public class StackConnection {
 
-	public static void savE(Stack stack) {
+	public static void savE(Stack stack) throws SQLException {
 		ConnectionJDBC.request(createStack(stack));
 	}
 
-	public static List<Stack> findALL() {
+	public static List<Stack> findALL() throws SQLException {
 		List<Stack> list = new ArrayList<Stack>();
-		try {
+	 
 			Connection connection = connectionNow();
 			Statement stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery(Sql.findAllStack());
@@ -31,16 +31,14 @@ public class StackConnection {
 				Stack stack = new Stack(rs.getInt("stackId"), rs.getString("name"));
 				list.add(stack);
 			}
-		} catch (SQLException e) {
-			list = null;
-			e.printStackTrace();
-		}
+	 
+	 
 		return list;
 	}
 
-	public static Stack findByID(Integer id) {
+	public static Stack findByID(Integer id) throws SQLException {
 		Stack stack = new Stack();
-		try {
+		 
 			Connection connection = connectionNow();
 			Statement stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery(findByIdStack(id));
@@ -50,17 +48,14 @@ public class StackConnection {
 				stack = new Stack(rs.getInt("stackId"), rs.getString("name"));
 
 			}
-		} catch (SQLException e) {
-			stack = null;
-			e.printStackTrace();
-		}
+		 
 
 		return stack;
 	}
 
-	public static List<Stack> findStackByProductId(Integer productId) {
+	public static List<Stack> findStackByProductId(Integer productId) throws SQLException {
 		List<Stack> list = new ArrayList<Stack>();
-		try {
+	 
 			Connection connection = connectionNow();
 			Statement stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery(findStackByProductID(productId));
@@ -69,10 +64,7 @@ public class StackConnection {
 				Stack stack = new Stack(rs.getInt("stackId"), rs.getString("name"));
 				list.add(stack);
 			}
-		} catch (SQLException e) {
-			list = null;
-			e.printStackTrace();
-		}
+		 
 		return list;
 	}
 

@@ -4,6 +4,8 @@ import static br.com.lucas.gudee.connection.Sql.createProduct;
 import static br.com.lucas.gudee.connection.Sql.createStack;
 import static br.com.lucas.gudee.connection.Sql.findAllProduct;
 
+import java.sql.SQLException;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -47,7 +49,7 @@ public class SqlTest {
 	
 	
 	@Test
-	public void createDatabase() {
+	public void createDatabase() throws SQLException {
 		 
 		DatabaseCreation.creation();
  

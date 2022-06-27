@@ -19,15 +19,15 @@ import br.com.lucas.gudee.model.Product;
 
 public class ProductConnection {
 
-	public static void savE(Product product) {
+	public static void savE(Product product) throws SQLException {
 
 		request(createProduct(product));
 
 	}
 
-	public static List<Product> findAll() {
+	public static List<Product> findAll() throws SQLException {
 		List<Product> list = new ArrayList<Product>();
-		try {
+		 
 			Connection connection = connectionNow();
 			Statement stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery(findAllProduct());
@@ -39,17 +39,14 @@ public class ProductConnection {
 						rs.getString("description"));
 				list.add(product);
 			}
-		} catch (SQLException e) {
-			list = null;
-			e.printStackTrace();
-		}
+		 
 		return list;
 	}
 
-	public static Product findBYID(Integer id) {
+	public static Product findBYID(Integer id) throws SQLException {
 		Product product = new Product();
 
-		try {
+ 
 			Connection connection = connectionNow();
 			Statement stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery(findByIdProduct(id));
@@ -59,10 +56,7 @@ public class ProductConnection {
 				product = new Product(rs.getInt("productId"), rs.getString("productName"), rs.getString("description"));
 
 			}
-		} catch (SQLException e) {
-			product = null;
-			e.printStackTrace();
-		}
+		 
 		return product;
 	}
 
@@ -90,6 +84,7 @@ public class ProductConnection {
  
 
 	public static List<Product> findAllFullByStackID(List<Integer> ids) {
+		System.out.println("ok aqui  entour no banco");
 		List<Product> productList = new ArrayList<Product>();
 
 		try {
@@ -107,6 +102,7 @@ public class ProductConnection {
 			productList = null;
 			e.printStackTrace();
 		}
+		System.out.println("ok aqui  saiu no banco");
 		return productList;
 		 
 	}

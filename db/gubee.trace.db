@@ -1283,3 +1283,6 @@ Caused by: org.h2.mvstore.MVStoreException: The file is locked: /home/lucas/Docu
 2022-06-26 15:37:12 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT  DISTINCT productId, productName, description  from product pr JOIN stack_product sp WHERE pr.productId = sp.productIdFK and  [*]or sp.stackIdFk = 1or sp.stackIdFk = 2"; expected "INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"; SQL statement:
 SELECT  DISTINCT productId, productName, description  from product pr JOIN stack_product sp WHERE pr.productId = sp.productIdFK and  or sp.stackIdFk = 1or sp.stackIdFk = 2 [42001-214]
+2022-06-26 23:36:38 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PRODUCT" already exists; SQL statement:
+create table product(productId int NOT NULL AUTO_INCREMENT,productName CHAR(255),description CHAR(255),PRIMARY KEY (productId)) [42101-214]

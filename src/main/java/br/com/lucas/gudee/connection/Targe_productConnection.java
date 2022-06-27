@@ -14,14 +14,14 @@ import br.com.lucas.gudee.model.Targe_product;
 
 public class Targe_productConnection {
 
-	public static void savE(Targe_product targe_product) {
+	public static void savE(Targe_product targe_product) throws SQLException {
 		ConnectionJDBC.request(createTarge_product(targe_product));
 		
 	}
 
-	public static List<Targe_product> findALL() {
+	public static List<Targe_product> findALL() throws SQLException {
 		List<Targe_product> list = new ArrayList<Targe_product>();
-		try {
+		 
 			Connection connection = connectionNow();
 			Statement stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery(Sql.findAllTarge_product());
@@ -31,10 +31,7 @@ public class Targe_productConnection {
 				Targe_product targe_product = new Targe_product(rs.getInt("targe_product"),rs.getInt("targeIdFk"), rs.getInt("productIdFK"));
 				list.add(targe_product);
 			}
-		} catch (SQLException e) {
-			list = null;
-			e.printStackTrace();
-		}
+		 
 		return list;
  
 	}

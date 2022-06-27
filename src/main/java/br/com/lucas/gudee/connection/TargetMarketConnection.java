@@ -17,14 +17,14 @@ import br.com.lucas.gudee.model.TargetMarket;
 
 public class TargetMarketConnection {
 
-	public static void savE(TargetMarket targetMarket) {
+	public static void savE(TargetMarket targetMarket) throws SQLException {
 		request(createTargetMarket(targetMarket));
 
 	}
 
-	public static List<TargetMarket> findALL() {
+	public static List<TargetMarket> findALL() throws SQLException {
 		List<TargetMarket> list = new ArrayList<TargetMarket>();
-		try {
+	 
 			Connection connection = connectionNow();
 			Statement stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery(findAllTargetMarket());
@@ -34,17 +34,14 @@ public class TargetMarketConnection {
 				TargetMarket targetMarket = new TargetMarket(rs.getInt("targetId"), rs.getString("name"));
 				list.add(targetMarket);
 			}
-		} catch (SQLException e) {
-			list = null;
-			e.printStackTrace();
-		}
+		 
 		return list;
 	}
 
-	public static TargetMarket findByID(Integer id) {
+	public static TargetMarket findByID(Integer id) throws SQLException {
 		TargetMarket targetMarket = new TargetMarket();
 
-		try {
+ 
 			Connection connection = connectionNow();
 			Statement stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery(Sql.findByIdTargetMarket(id));
@@ -54,17 +51,14 @@ public class TargetMarketConnection {
 				targetMarket = new TargetMarket(rs.getInt("targetId"), rs.getString("name"));
 
 			}
-		} catch (SQLException e) {
-			targetMarket = null;
-			e.printStackTrace();
-		}
+		 
 		return targetMarket;
 
 	}
 
-	public static List<TargetMarket> findTargetMarketByProductId(Integer productId) {
+	public static List<TargetMarket> findTargetMarketByProductId(Integer productId) throws SQLException {
 		List<TargetMarket> list = new ArrayList<TargetMarket>();
-		try {
+		 
 			Connection connection = connectionNow();
 			Statement stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery(findTargetMarketByProductID(productId));
@@ -74,10 +68,7 @@ public class TargetMarketConnection {
 				TargetMarket targetMarket = new TargetMarket(rs.getInt("targetId"), rs.getString("name"));
 				list.add(targetMarket);
 			}
-		} catch (SQLException e) {
-			list = null;
-			e.printStackTrace();
-		}
+		 
 		return list;
 	}
 

@@ -12,7 +12,6 @@ public class Targe_product {
 
 	public Targe_product(Integer targeIdFk, Integer productIdFK) {
 		super();
-
 		this.targeIdFk = targeIdFk;
 		this.productIdFK = productIdFK;
 	}

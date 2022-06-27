@@ -2,6 +2,7 @@ package br.com.lucas.gudee.service;
 
 import static org.junit.Assert.assertNotEquals;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.junit.Before;
@@ -19,7 +20,7 @@ public class StackServiceTest {
 	}
 
 	@Test
-	public void saveTest() {
+	public void saveTest() throws SQLException {
 
 		Stack stack = new Stack("Teste 1");
 
@@ -27,7 +28,7 @@ public class StackServiceTest {
 
 	}
     @Test
-	public void findAll() {
+	public void findAll() throws SQLException {
 		List<Stack> list = null;
 
 		
@@ -38,7 +39,7 @@ public class StackServiceTest {
 	}
 
     @Test
-	public void findAById() {
+	public void findAById() throws SQLException {
 		 Stack stack = null;
 
 		

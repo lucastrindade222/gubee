@@ -1,8 +1,7 @@
 package br.com.lucas.gudee.service;
 
+import java.sql.SQLException;
 import java.util.List;
-
-import javax.ws.rs.Encoded;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -22,7 +21,7 @@ public class Targe_productServiceTeste {
 
 	@Test
 	@Ignore
-	public void saveTest() {
+	public void saveTest() throws SQLException {
 		Targe_product targe_product = new Targe_product(1, 2);
 
 		server.save(targe_product);
@@ -30,7 +29,7 @@ public class Targe_productServiceTeste {
 	}
 
 	@Test
-	public void findAll() {
+	public void findAll() throws SQLException {
 		List<Targe_product> list = null;
 
 		list = server.findAll();
